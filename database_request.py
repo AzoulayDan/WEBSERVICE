@@ -16,11 +16,13 @@ def check_login_infos(login, password):
 		"a_password":password
 		})
 	
-	if (count[0]['count'] != 0):
+	if (count[0]['count'] == 0):
 		return_value = -1
 	else:
-		role_array = db.select("SELECT role FROM Compte WHERE (login_compte = %s AND password_compte = %s) \
-			" %(str(login), str(password)))
+		role_array = db.select("SELECT role FROM Compte WHERE (login_compte = %(a_login)s AND password_compte = %(a_password)s)", {
+			"a_login":login,
+			"a_password":password
+			})
 
 		if (len(role_array) == 1):
 			role = role_array[0]['role_compte']

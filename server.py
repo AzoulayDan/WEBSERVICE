@@ -35,5 +35,77 @@ def test():
 	login_infos4 = check_login_infos('thor', 'pasxk') #-1
 	return response({"compte1":login_infos, "compte2":login_infos2, "compte3":login_infos3, "compte4":login_infos4}, 200)
 
+#Structure des routes du web service entier (sans prendre en compte le docker)
+#Le docker va être ensuite un second web service ou un morceau de code qui va être lancé avec une route.
+#Tout ce qui suit dessous est a implémenté
+########################
+# Methodes GET
+########################
+@app.route('/admin/teams', methods=['GET'])
+def get_infos_teams():
+	'''
+	Cette route est appelée lorsque l'administrateur
+	de la solution désire l'ensemble des informations
+	concernant les différentes teams.
+	'''
+	return 'différentes teams'
+
+@app.route('/admin/teams/<team>', methods=['GET'])
+def get_infos_team():
+	'''
+	Cette route est appelée lorsque l'administrateur
+	de la solution désire l'ensemble des informations
+	concernant une team.
+	'''
+	return 'infos a propos de une seule team'
+
+@app.route('/game/mission/<team>', methods=['GET'])
+def get_mission(team):
+	'''
+	Cette route est appelée lorsque l'on envoie une
+	au client une mission pour une équipe en
+	particulier.
+	'''
+	return 'envoyer une mission à une équipe en particulier'
+
+
+########################
+# Methodes POST
+########################
+@app.route('/game/team/create_account', methods=['POST'])
+def create_account():
+	'''
+	Cette route est appelée lorsque une équipe crée
+	son compte afin de jouer.
+	'''
+	return 'une equipe nouvelle est crée dans le jeu'
+
+@app.route('/game/validate_photo/<team>', methods=['POST'])
+def validate_picture(team):
+	'''
+	Cette route est appelée lorsque le client vérifie
+	si la photo qu'il a pris a été correcte ou non.
+	A mettre ici l'analyse d'image ou non (reste à voir)
+	'''
+	return 'valider une image ici'
+
+@app.route('/admin/connect', methods=['POST'])
+def connect_admin():
+	'''
+	Cette route est appelée lors de la connection de
+	l'administrateur de la solution.
+	'''
+	return 'connexion de admin'
+
+@app.route('/game/connect/', methods=['POST'])
+def connect_player():
+	'''
+	Cette route est appelée lorsqu'un joueur se 
+	connecte à une team en particulier.
+	Le client envoie ainsi au serveur l'équipe qu'il 
+	rejoins, et son nom propre à lui.
+	'''
+	return 'connexion à une team pour le jeu'
+
 if __name__ == '__main__':
 	app.run()

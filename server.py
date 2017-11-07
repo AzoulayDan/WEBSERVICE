@@ -15,7 +15,6 @@ def index():
 	'''
 	return redirect('debug/db/reset')
 
-
 @app.route('/debug/db/reset', methods=['GET'])
 def init_db():
 	'''
@@ -25,7 +24,6 @@ def init_db():
 	db.executeFile('database.sql')
 	db.close()
 	return 'Database OK'
-
 
 @app.route('/test', methods=['GET'])
 def test():
@@ -51,7 +49,7 @@ def get_infos_teams():
 	return 'différentes teams'
 
 @app.route('/admin/teams/<team>', methods=['GET'])
-def get_infos_team():
+def get_infos_team(team):
 	'''
 	Cette route est appelée lorsque l'administrateur
 	de la solution désire l'ensemble des informations

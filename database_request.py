@@ -8,6 +8,7 @@ def check_login_infos(login, password):
 		* -1 si le compte n'existe pas.
 		* 0 si le compte est un compte administrateur
 		* 1 si le compte est un compte gamer
+		* -2 si il y a un probleme en base de données
 	'''
 	return_value = -2
 	db = Db()
@@ -19,7 +20,7 @@ def check_login_infos(login, password):
 	if (count[0]['count'] == 0):
 		return_value = -1
 	else:
-		role_array = db.select("SELECT role FROM Compte WHERE (login_compte = %(a_login)s AND password_compte = %(a_password)s)", {
+		role_array = db.select("SELECT role_compte FROM Compte WHERE (login_compte = %(a_login)s AND password_compte = %(a_password)s)", {
 			"a_login":login,
 			"a_password":password
 			})

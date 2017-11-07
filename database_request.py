@@ -11,8 +11,10 @@ def check_login_infos(login, password):
 	'''
 	return_value = -2
 	db = Db()
-	count = db.select("SELECT COUNT(*) FROM Compte WHERE (login_compte = %s AND password_compte = %s) \
-		"%(str(login), str(password)))
+	count = db.select("SELECT COUNT(*) FROM Compte WHERE (login_compte = %(a_login)s AND password_compte = %(a_password)s)", {
+		"a_login":login,
+		"a_password":password
+		})
 	
 	if (count[0]['count'] != 0):
 		return_value = -1
@@ -30,3 +32,9 @@ def check_login_infos(login, password):
 				return_value = 1
 	db.close()
 	return return_value
+
+
+		recipe = db.select("SELECT * FROM Recipe WHERE (name_recipe = %(name)s AND id_player = %(id)s)", {
+			"name":therecipe,
+			"id":playerID
+			})

@@ -7,5 +7,8 @@ CREATE TABLE Compte(
 	role_compte		Varchar(25)
 );
 
-INSERT INTO Compte(login_compte, password_compte, role_compte) VALUES('toto','password','admin');
+INSERT INTO Compte(login_compte, password_compte, role_compte) VALUES
+	('toto','password','admin'),
+	('babar', 'password2', 'team')
+	('elephant', 'password3', 'coucou');
 

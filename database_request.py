@@ -5,10 +5,10 @@ def check_login_infos(login, password):
 	'''
 	Cette fonction permet de vérifier les informations de connexions.
 	Valeur de retour:
+		* -2 si il y a un probleme en base de données
 		* -1 si le compte n'existe pas.
 		* 0 si le compte est un compte administrateur
 		* 1 si le compte est un compte gamer
-		* -2 si il y a un probleme en base de données
 	'''
 	return_value = -2
 	db = Db()

@@ -32,9 +32,3 @@ def check_login_infos(login, password):
 				return_value = 1
 	db.close()
 	return return_value
-
-
-		recipe = db.select("SELECT * FROM Recipe WHERE (name_recipe = %(name)s AND id_player = %(id)s)", {
-			"name":therecipe,
-			"id":playerID
-			})

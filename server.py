@@ -29,7 +29,7 @@ def init_db():
 
 @app.route('/test', methods=['GET'])
 def test():
-	login_infos = check_login_infos('toto', 'password', 'admin')
+	login_infos = check_login_infos('toto', 'password')
 	return response({"essaie":login_infos}, 200)
 
 if __name__ == '__main__':

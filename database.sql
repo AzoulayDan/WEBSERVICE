@@ -71,7 +71,7 @@ ALTER TABLE trouver ADD CONSTRAINT FK_trouver_id_compte FOREIGN KEY (id_compte) 
 ALTER TABLE trouver ADD CONSTRAINT FK_trouver_id_photo FOREIGN KEY (id_photo) REFERENCES Photo(id_photo);
 
 -- Insert to test
-INSERT INTO Compte(login_compte, password_compte, role_compte, points_compte) VALUES 
+INSERT INTO Compte(login_compte, password_compte, role_compte, points_compte, device_identifier_compte) VALUES 
 ('toto', 'password', 'admin', 0, 'putain'),
 ('babar', 'password2', 'team', 0, 'merde'),
 ('elephant', 'password3', 'coucou', 0, 'hello'); 

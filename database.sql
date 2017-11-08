@@ -11,14 +11,14 @@ CREATE TABLE Compte(
         points_compte   Int ,
         PRIMARY KEY (id_compte ) ,
         UNIQUE (login_compte )
-)ENGINE=InnoDB;
+);
 
 -- Table: Mission
 CREATE TABLE Mission(
         id_mission   int NOT NULL ,
         name_mission Varchar (35) ,
         PRIMARY KEY (id_mission )
-)ENGINE=InnoDB;
+);
 
 -- Table: Photo
 CREATE TABLE Photo(
@@ -27,14 +27,14 @@ CREATE TABLE Photo(
         lieu_photo Varchar (60) ,
         PRIMARY KEY (id_photo ) ,
         UNIQUE (name_photo )
-)ENGINE=InnoDB;
+);
 
 -- Table: participer
 CREATE TABLE participer(
         id_compte  Int NOT NULL ,
         id_mission Int NOT NULL ,
         PRIMARY KEY (id_compte ,id_mission )
-)ENGINE=InnoDB;
+);
 
 
 -- Table: avoir
@@ -42,7 +42,7 @@ CREATE TABLE avoir(
         id_photo   Int NOT NULL ,
         id_mission Int NOT NULL ,
         PRIMARY KEY (id_photo ,id_mission )
-)ENGINE=InnoDB;
+);
 
 
 -- Table: trouver
@@ -50,7 +50,7 @@ CREATE TABLE trouver(
         id_compte Int NOT NULL ,
         id_photo  Int NOT NULL ,
         PRIMARY KEY (id_compte ,id_photo )
-)ENGINE=InnoDB;
+);
 
 -- Alter table
 ALTER TABLE participer ADD CONSTRAINT FK_participer_id_compte FOREIGN KEY (id_compte) REFERENCES Compte(id_compte);

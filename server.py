@@ -1,5 +1,5 @@
 #-*- encoding:utf-8 -*-
-from flask import Flask, redirect
+from flask import Flask, redirect, request
 from flask_cors import CORS
 from shared import *
 from database_request import *
@@ -29,12 +29,24 @@ def init_db():
 def connect_player():
 	'''
 	Cette route est utilisée pour connecter un joueur.
-	Si le joueur a un device enregistré en base, on le connecte.
-	Si le joueur n'a pas un device enregistré en base, on le dirige vers 
-	la page de creation.
+	Si l'appareil du joueur existe, on le connecte.
+	Si l'appareil du joueur n'existe pas en base, il doit s'inscrire.
+	Valeur de retour:
+		* Appareil existent: {'Exist':1}
+		* Appareil n'existent pas: {'Exist':0}
 	'''
-	return 'envoyer adresse mac sur ce chemin'
+	data = request.get_json()
+	if (is_valid_data(data) == True): #Forme donnée valide
+		if ('identifier_device' in data): #Key donnée valide
+			device_exist = check_device_exist(data['identifier_device']) #Appareil existe en base?
+			if (device_exist == True): # Existe
+				return response({'Exist':1})
+			return response({'Exist':0}) #Existe pas
+		return bad_request()
+	return bad_request()
 
+
+####Route de test bordel de chiot de merde
 @app.route('/test', methods=['GET'])
 def test():
 	login_infos = check_login_infos('toto', 'password') #0

@@ -23,3 +23,10 @@ def is_valid_data(data):
 	if not (isinstance(data, dict)):
 		return False
 	return True
+
+def bad_request():
+	'''
+	Cette fonction permet de retourner le message d'erreur
+	'Bad request' avec un status code de 400.
+	'''
+	return response('Bad request', 400)

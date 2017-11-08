@@ -25,6 +25,16 @@ def init_db():
 	db.close()
 	return 'Database OK'
 
+@app.route('/game/connect/', methods=['POST'])
+def connect_player():
+	'''
+	Cette route est utilisée pour connecter un joueur.
+	Si le joueur a un device enregistré en base, on le connecte.
+	Si le joueur n'a pas un device enregistré en base, on le dirige vers 
+	la page de creation.
+	'''
+	return 'envoyer adresse mac sur ce chemin'
+
 @app.route('/test', methods=['GET'])
 def test():
 	login_infos = check_login_infos('toto', 'password') #0
@@ -94,16 +104,6 @@ def connect_admin():
 	l'administrateur de la solution.
 	'''
 	return 'connexion de admin'
-
-@app.route('/game/connect/', methods=['POST'])
-def connect_player():
-	'''
-	Cette route est appelée lorsqu'un joueur se 
-	connecte à une team en particulier.
-	Le client envoie ainsi au serveur l'équipe qu'il 
-	rejoins, et son nom propre à lui.
-	'''
-	return 'connexion à une team pour le jeu'
 
 if __name__ == '__main__':
 	app.run()

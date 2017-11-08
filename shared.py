@@ -10,3 +10,16 @@ def response(data, status=200):
 	resp.mimetype = 'application/json'
 	return resp
 
+def is_valid_data(data):
+	'''
+	Cette fonction permet de vérifier si la donnée reçue
+	peut être traité par le serveur.
+	Valeur de retour:
+		* False si la donnée ne peut pas être traitée
+		* True si la donnée peut être traitée
+	'''
+	if (data == None):
+		return False
+	if not (isinstance(data, dict)):
+		return False
+	return True

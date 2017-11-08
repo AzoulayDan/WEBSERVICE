@@ -9,7 +9,9 @@ CREATE TABLE Compte(
         password_compte Varchar (35) ,
         role_compte     Varchar (25) ,
         points_compte   Int ,
-        UNIQUE (login_compte )
+        device_identifier_compte       Varchar(35) ,
+        UNIQUE (login_compte ) ,
+        UNIQUE (device_identifier_compte )
 );
 
 -- Table: Mission
@@ -49,6 +51,17 @@ CREATE TABLE trouver(
         PRIMARY KEY (id_compte ,id_photo )
 );
 
+
+
+-- Table: Photo_trouve
+CREATE TABLE Photo_trouve(
+        id_trouve  SERIAL PRIMARY KEY ,
+        id_photo   Int ,
+        id_compte  Int ,
+        id_mission Int 
+);
+
+
 -- Alter table
 ALTER TABLE participer ADD CONSTRAINT FK_participer_id_compte FOREIGN KEY (id_compte) REFERENCES Compte(id_compte);
 ALTER TABLE participer ADD CONSTRAINT FK_participer_id_mission FOREIGN KEY (id_mission) REFERENCES Mission(id_mission);
@@ -59,6 +72,6 @@ ALTER TABLE trouver ADD CONSTRAINT FK_trouver_id_photo FOREIGN KEY (id_photo) RE
 
 -- Insert to test
 INSERT INTO Compte(login_compte, password_compte, role_compte, points_compte) VALUES 
-('toto', 'password', 'admin', 0),
-('babar', 'password2', 'team', 0),
-('elephant', 'password3', 'coucou', 0); 
+('toto', 'password', 'admin', 0, 'putain'),
+('babar', 'password2', 'team', 0, 'merde'),
+('elephant', 'password3', 'coucou', 0, 'hello'); 

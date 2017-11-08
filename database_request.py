@@ -35,3 +35,4 @@ def check_login_infos(login, password):
 				return_value = 1
 	db.close()
 	return return_value
+

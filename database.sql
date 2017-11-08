@@ -75,6 +75,11 @@ ALTER TABLE avoir ADD CONSTRAINT FK_avoir_id_mission FOREIGN KEY (id_mission) RE
 ALTER TABLE trouver ADD CONSTRAINT FK_trouver_id_compte FOREIGN KEY (id_compte) REFERENCES Compte(id_compte);
 ALTER TABLE trouver ADD CONSTRAINT FK_trouver_id_photo FOREIGN KEY (id_photo) REFERENCES Photo(id_photo);
 
+INSERT INTO Compte(login_compte, password_compte, role_compte, points_compte) VALUES 
+('toto', 'password', 'admin', 0),
+('babar', 'password2', 'team', 0),
+('elephant', 'password3', 'coucou', 0); 
+
 #CREATE TABLE Compte(
 #	id_compte		SERIAL PRIMARY KEY,
 #	login_compte		Varchar(25),

@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS Photo CASCADE;
 
 -- Table: Compte
 CREATE TABLE Compte(
-        id_compte       int (11) Auto_increment  NOT NULL ,
+        id_compte       int Auto_increment  NOT NULL ,
         login_compte    Varchar (35) ,
         password_compte Varchar (35) ,
         role_compte     Varchar (25) ,
@@ -15,14 +15,14 @@ CREATE TABLE Compte(
 
 -- Table: Mission
 CREATE TABLE Mission(
-        id_mission   int (11) Auto_increment  NOT NULL ,
+        id_mission   int Auto_increment  NOT NULL ,
         name_mission Varchar (35) ,
         PRIMARY KEY (id_mission )
 )ENGINE=InnoDB;
 
 -- Table: Photo
 CREATE TABLE Photo(
-        id_photo   int (11) Auto_increment  NOT NULL ,
+        id_photo   int Auto_increment  NOT NULL ,
         name_photo Varchar (35) ,
         lieu_photo Varchar (60) ,
         PRIMARY KEY (id_photo ) ,

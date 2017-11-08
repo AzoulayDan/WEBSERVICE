@@ -4,28 +4,25 @@ DROP TABLE IF EXISTS Photo CASCADE;
 
 -- Table: Compte
 CREATE TABLE Compte(
-        id_compte       int NOT NULL ,
+        id_compte       SERIAL PRIMARY KEY ,
         login_compte    Varchar (35) ,
         password_compte Varchar (35) ,
         role_compte     Varchar (25) ,
         points_compte   Int ,
-        PRIMARY KEY (id_compte ) ,
         UNIQUE (login_compte )
 );
 
 -- Table: Mission
 CREATE TABLE Mission(
-        id_mission   int NOT NULL ,
+        id_mission   SERIAL PRIMARY KEY ,
         name_mission Varchar (35) ,
-        PRIMARY KEY (id_mission )
 );
 
 -- Table: Photo
 CREATE TABLE Photo(
-        id_photo   int NOT NULL ,
+        id_photo   SERIAL PRIMARY KEY ,
         name_photo Varchar (35) ,
         lieu_photo Varchar (60) ,
-        PRIMARY KEY (id_photo ) ,
         UNIQUE (name_photo )
 );
 

@@ -25,7 +25,7 @@ def init_db():
 	db.close()
 	return 'Database OK'
 
-@app.route('/game/connect/', methods=['POST'])
+@app.route('/game/connect', methods=['POST'])
 def connect_player():
 	'''
 	Cette route est utilisée pour connecter un joueur.

@@ -15,7 +15,7 @@ CREATE TABLE Compte(
 -- Table: Mission
 CREATE TABLE Mission(
         id_mission   SERIAL PRIMARY KEY ,
-        name_mission Varchar (35) ,
+        name_mission Varchar (35)
 );
 
 -- Table: Photo

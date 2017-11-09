@@ -25,7 +25,7 @@ def is_valid_data(data):
 	return True
 
 ########
-def bad_request(key=Error):
+def bad_request(key='error'):
 	'''
 	Cette fonction permet de retourner le message d'erreur
 	'Bad request' avec un status code de 400.

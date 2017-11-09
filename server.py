@@ -52,20 +52,20 @@ def create_account():
 	Cette route est utilisée pour créer un nouveau un compte
 	à un nouveau joueur.
 	Valeur de retour:
-		* Compte déjà existent: {'account_creation':409}
-		* Compte créé : {'account_creation':201}
-		* Bad request : {'account_creation':400}
+		* Compte déjà existent: {'gameCreation':409}
+		* Compte créé : {'gameCreation':201}
+		* Bad request : {'gameCreation':400}
 	'''
 	datas = request.get_json()
 	if (is_valid_data(datas) == True):
 		if ('login' in datas and 'password' in datas and 'identifier' in datas):
 			if (check_login_exist(datas['login']) == True):
-				return response({'account_creation':409})
+				return response({'gameCreation':409})
 			account_created = create_gamer_account(datas['login'], datas['password'], datas['identifier'])
 			if (account_created == True):
-				return response({'account_creation':201})
-		return response({'account_creation':400})
-	return response({'account_creation':400})
+				return response({'gameCreation':201})
+		return response({'gameCreation':400})
+	return response({'gameCreation':400})
 
 ####Route de test bordel de chiot de merde
 @app.route('/test', methods=['GET'])

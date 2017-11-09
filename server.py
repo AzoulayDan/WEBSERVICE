@@ -79,7 +79,7 @@ def test():
 @app.route('/deleteCompte',methods=['GET'])
 def delete_count():
 	db = Db()
-	db.execute("TRUNCATE TABLE Compte")
+	db.execute("DELETE FROM Compte")
 	db.close()
 
 #Structure des routes du web service entier (sans prendre en compte le docker)

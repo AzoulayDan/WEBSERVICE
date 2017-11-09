@@ -29,4 +29,5 @@ def bad_request():
 	Cette fonction permet de retourner le message d'erreur
 	'Bad request' avec un status code de 400.
 	'''
-	return response('Bad request', 400)
+	error = {'error':'Error 400 : Bad request'}
+	return response(error, 400)

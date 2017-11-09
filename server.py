@@ -40,8 +40,8 @@ def connect_player():
 		if ('identifier_device' in data): #Key donnée valide
 			device_exist = check_device_exist(data['identifier_device']) #Appareil existe en base?
 			if (device_exist == True): # Existe
-				return response({'Exist':1})
-			return response({'Exist':0}) #Existe pas
+				return response({'exist':1})
+			return response({'exist':0}) #Existe pas
 		return bad_request()
 	return bad_request()
 

@@ -45,6 +45,7 @@ def create_gamer_account(login, password, identifier):
 	Valeur de retour:
 		* True si le compte est créée.
 	'''
+	db = Db()
 	db.execute("INSERT INTO Compte(login_compte, password_compte, role_compte, points_compte, \
 		device_identifier_compte) VALUES (%(login)s, %(password)s, %(role)s, %(points)s, \
 		%(identifier_device)s)", {
@@ -54,6 +55,7 @@ def create_gamer_account(login, password, identifier):
 		"points":0,
 		"identifier_device":identifier
 	})
+	db.close()
 	return True
 
 

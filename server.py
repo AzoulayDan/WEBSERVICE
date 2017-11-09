@@ -76,6 +76,12 @@ def test():
 	login_infos4 = check_login_infos('thor', 'pasxk') #-1
 	return response({"compte1":login_infos, "compte2":login_infos2, "compte3":login_infos3, "compte4":login_infos4}, 200)
 
+@app.route('/deleteCompte',methods=['GET'])
+def delete_count():
+	db = Db()
+	db.execute("TRUNCATE TABLE Compte")
+	db.close()
+
 #Structure des routes du web service entier (sans prendre en compte le docker)
 #Le docker va être ensuite un second web service ou un morceau de code qui va être lancé avec une route.
 #Tout ce qui suit dessous est a implémenté

@@ -81,7 +81,7 @@ def delete_count():
 	db = Db()
 	db.execute("DELETE FROM Compte")
 	db.close()
-	return response({''})
+	return response({'essaie':''})
 
 #Structure des routes du web service entier (sans prendre en compte le docker)
 #Le docker va être ensuite un second web service ou un morceau de code qui va être lancé avec une route.

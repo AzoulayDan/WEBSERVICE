@@ -42,8 +42,8 @@ def connect_player():
 			if (device_exist == True): # Existe
 				return response({'exist':1})
 			return response({'exist':0}) #Existe pas
-		return bad_request()
-	return bad_request()
+		return bad_request('exist')
+	return bad_request('exist')
 
 
 ####Route de test bordel de chiot de merde

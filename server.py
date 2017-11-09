@@ -59,7 +59,7 @@ def create_account():
 	datas = request.get_json()
 	if (is_valid_data(datas) == True):
 		if ('login' in datas and 'password' in datas and 'identifier' in datas):
-			if (check_login_exist(datas['login']) == True or check_device_exist(data['identifier']==False):
+			if (check_login_exist(datas['login']) == True or check_device_exist(data['identifier']==False)):
 				return response({'creation_game_account':409})
 			account_created = create_gamer_account(datas['login'], datas['password'], datas['identifier'])
 			if (account_created == True):

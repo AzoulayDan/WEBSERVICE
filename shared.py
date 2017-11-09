@@ -24,7 +24,7 @@ def is_valid_data(data):
 		return False
 	return True
 
-########
+########on verra plus tard si oui ou non on va lutiliser
 def bad_request(key='error'):
 	'''
 	Cette fonction permet de retourner le message d'erreur

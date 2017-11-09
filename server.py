@@ -32,8 +32,9 @@ def connect_player():
 	Si l'appareil du joueur existe, on le connecte.
 	Si l'appareil du joueur n'existe pas en base, il doit s'inscrire.
 	Valeur de retour:
-		* Appareil existent: {'Exist':1}
-		* Appareil n'existent pas: {'Exist':0}
+		* Appareil existent: {'exist':1}
+		* Appareil n'existent pas: {'exist':0}
+		* Bad request : {'exist':400}
 	'''
 	data = request.get_json()
 	if (is_valid_data(data) == True): #Forme donnée valide
@@ -43,8 +44,28 @@ def connect_player():
 				return response({'exist':1})
 			return response({'exist':0}) #Existe pas
 		return response({'exist':400})
-	return bad_request({'exist':400})
+	return response({'exist':400})
 
+@app.route('/game/team/create_account', methods=['POST'])
+def create_account():
+	'''
+	Cette route est utilisée pour créer un nouveau un compte
+	à un nouveau joueur.
+	Valeur de retour:
+		* Compte déjà existent: {'account_creation':409}
+		* Compte créé : {'account_creation':201}
+		* Bad request : {'account_creation':400}
+	'''
+	datas = request.get_json()
+	if (is_valid_data(datas) == True):
+		if ('login' in datas and 'password' in datas and 'identifier' in datas):
+			if (check_login_exist(datas['login']) == True):
+				return response({'account_creation':409})
+			account_created = create_gamer_account(datas['login'], datas['password'], datas['identifier'])
+			if (account_created == True):
+				return response({'account_creation':201})
+		return response({'account_creation':400})
+	return response({'account_creation':400})
 
 ####Route de test bordel de chiot de merde
 @app.route('/test', methods=['GET'])
@@ -92,13 +113,6 @@ def get_mission(team):
 ########################
 # Methodes POST
 ########################
-@app.route('/game/team/create_account', methods=['POST'])
-def create_account():
-	'''
-	Cette route est appelée lorsque une équipe crée
-	son compte afin de jouer.
-	'''
-	return 'une equipe nouvelle est crée dans le jeu'
 
 @app.route('/game/validate_photo/<team>', methods=['POST'])
 def validate_picture(team):

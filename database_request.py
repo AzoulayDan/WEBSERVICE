@@ -19,6 +19,56 @@ def check_device_exist(device_identifier):
 	return False
 
 
+#to test
+def check_login_exist(login):
+	'''
+	Cette fonction permet de vérifier l'existence du nom d'une équipe par rapport au paramètre login.
+	Valeur de retour:
+		* True si le nom de l'équipe existe déjà.
+		* False si le nom de l'équipe n'existe pas.
+	'''
+	db = Db()
+	count = db.select("SELECT COUNT(*) FROM Compte WHERE (login_compte = %(name_team)s)", {
+		"name_team":login
+		})
+	db.close()
+	
+	if (count[0]['count'] == 1):
+		return True
+	return False
+	
+
+#To test
+def create_gamer_account(login, password, identifier):
+	'''
+	Cette fonction permet de créer un nouveau compte gamer.
+	Valeur de retour:
+		* True si le compte est créée.
+	'''
+	db.execute("INSERT INTO Compte(login_compte, password_compte, role_compte, points_compte, \
+		device_identifier_compte) VALUES (%(login)s, %(password)s, %(role)s, %(points)s, \
+		%(identifier_device)s)", {
+		"login":login,
+		"password":password,
+		"role":"team",
+		"points":0,
+		"identifier_device":identifier
+	})
+	return True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #A voir si on utilise ce qui se trouve dessous.
 def check_login_infos(login, password):
 	'''
